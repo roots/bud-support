@@ -3,6 +3,7 @@ name: build
 on:
   push:
     paths:
+      - .github/workflows/build.yml
       - packages/**/*/package.json
       - packages/**/*/src/*
       - packages/**/*/src/**/*
@@ -51,6 +52,11 @@ jobs:
         run: yarn
 
       - name: Build
-        run: yarn build:ci
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y smemstat
+          smemstat -l -t 10 &
+          yarn build:ci
+          kill -SIGINT %1
         env:
           NODE_OPTIONS: '--max-old-space-size=2048'
