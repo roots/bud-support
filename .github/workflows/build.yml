@@ -31,4 +31,4 @@ jobs:
           fetch-depth: 0
 
       - name: Run test container
-        run: docker compose up --exit-code-from bud
+        run: docker-compose up --exit-code-from bud
