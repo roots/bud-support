@@ -35,6 +35,9 @@ jobs:
         with:
           node-version: ${{matrix.node}}
 
+      - name: Yarn
+        run: yarn set version from sources
+
       - name: Cache
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
@@ -44,15 +47,15 @@ jobs:
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-bust-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install
         run: yarn install
 
-      - name: Build CJS
-        run: yarn build:ci:cjs
+      - name: Profile CJS
+        run: yarn profile:cjs
 
-      - name: Build ESM
-        run: yarn build:ci:esm
+      - name: Profile ESM
+        run: yarn profile:esm
