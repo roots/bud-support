@@ -8,10 +8,10 @@ echo "Installing"
 yarn install
 
 echo "Building cjs"
-yarn build:cjs:ci
+yarn build:cjs
 
 echo "Building esm"
-yarn build:esm:ci
+yarn build:esm
 
 echo "Linting packages"
 yarn lint
@@ -21,7 +21,5 @@ yarn pkg
 
 echo "Test"
 yarn test
-
-echo "Done"
 
 exit
