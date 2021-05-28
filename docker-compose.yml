@@ -20,7 +20,6 @@ services:
     container_name: bud
     networks:
       - node-network
-    user: node
     working_dir: /bud
     volumes:
       - type: bind
