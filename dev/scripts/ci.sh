@@ -2,17 +2,22 @@
 
 source './handler.sh'
 
-echo "Yarn version"
-yarn set version from sources
+# echo "Yarn version"
+# yarn set version from sources
 
 echo "Installing"
 yarn install
 
-echo "Building cjs"
-yarn build:cjs
+pushd packages/@roots
 
-echo "Building esm"
-yarn build:esm
+for package in */ ; do
+  pushd "$package"
+  yarn build:cjs
+  yarn build:esm
+  popd
+done
+
+popd
 
 echo "Linting packages"
 yarn lint
