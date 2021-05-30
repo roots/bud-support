@@ -29,6 +29,7 @@
     }
   },
   "include": ["packages/@roots"],
+  "exclude": ["packages/@roots/bud-typings"],
   "references": [
     {
       "path": "packages/@roots/bud-api"
@@ -122,9 +123,6 @@
     },
     {
       "path": "packages/@roots/bud-typescript"
-    },
-    {
-      "path": "packages/@roots/bud-typings"
     },
     {
       "path": "packages/@roots/bud-vue"
