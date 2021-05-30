@@ -1,6 +1,9 @@
 #!/bin/bash
 
-source './handler.sh'
+# YOINK! https://stackoverflow.com/a/4774063
+SCRIPTS_DIR="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
+
+source "${SCRIPTS_DIR}/handler.sh"
 
 # echo "Yarn version"
 # yarn set version from sources
@@ -8,16 +11,11 @@ source './handler.sh'
 echo "Installing"
 yarn install
 
-pushd packages/@roots
+echo "Building cjs"
+yarn build:cjs
 
-for package in */ ; do
-  pushd "$package"
-  yarn build:cjs
-  yarn build:esm
-  popd
-done
-
-popd
+echo "Building esm"
+yarn build:esm
 
 echo "Linting packages"
 yarn lint
