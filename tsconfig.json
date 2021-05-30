@@ -21,6 +21,7 @@
     "skipLibCheck": true,
     "strict": false,
     "target": "es2015",
+    "outDir": "./lib/cjs",
     "baseUrl": ".",
     "paths": {
       "@roots/*": [
@@ -28,8 +29,13 @@
       ]
     }
   },
+  "files": [],
   "include": ["packages/@roots"],
-  "exclude": ["packages/@roots/bud-typings"],
+  "exclude": [
+    "packages/@roots/bud-typings",
+    "packages/@roots/*/types",
+    "packages/@roos/*/lib"
+  ],
   "references": [
     {
       "path": "packages/@roots/bud-api"
