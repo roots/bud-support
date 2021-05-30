@@ -3,10 +3,15 @@
     "baseUrl": "./src",
     "outDir": "./dist",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "strict": false,
     "checkJs": false,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -14,4 +19,21 @@
     "resolveJsonModule": true,
     "jsx": "preserve"
   },
+  "references": [
+    {
+      "path": "../../packages/@roots/bud"
+    },
+    {
+      "path": "../../packages/@roots/bud-babel"
+    },
+    {
+      "path": "../../packages/@roots/bud-cli"
+    },
+    {
+      "path": "../../packages/@roots/bud-postcss"
+    },
+    {
+      "path": "../../packages/@roots/bud-react"
+    }
+  ]
 }

@@ -28,6 +28,7 @@
       ]
     }
   },
+  "include": ["packages/@roots"],
   "references": [
     {
       "path": "packages/@roots/bud-api"

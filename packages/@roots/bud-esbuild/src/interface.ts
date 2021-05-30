@@ -1,3 +1,4 @@
+import Webpack from 'webpack'
 import {Module} from '@roots/bud-framework'
 
 declare module '@roots/bud-framework' {
@@ -75,7 +76,7 @@ declare module '@roots/bud-framework' {
 
   namespace Hooks.Rule {
     interface Definitions {
-      ts: any
+      ts: Webpack.RuleSetRule
     }
   }
 }

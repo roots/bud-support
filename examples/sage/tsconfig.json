@@ -2,15 +2,24 @@
   "compilerOptions": {
     "baseUrl": "./resources",
     "paths": {
-      "@scripts/*": ["scripts/*"],
-      "@styles/*": ["styles/*"]
+      "@scripts/*": [
+        "scripts/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ]
     },
     "outDir": "./public",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "strict": false,
     "checkJs": false,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -18,6 +27,21 @@
     "resolveJsonModule": true,
     "jsx": "preserve"
   },
-  "include": ["resources/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "resources/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../../packages/@roots/bud"
+    },
+    {
+      "path": "../../packages/@roots/bud-cli"
+    },
+    {
+      "path": "../../packages/@roots/sage"
+    }
+  ]
 }
