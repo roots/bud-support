@@ -1,31 +1,34 @@
 import Command from '../../Command'
-import {Framework} from '@roots/bud'
+import {Framework, config} from '@roots/bud'
+import Runner from '../../Runner'
+import Build from '../../Build'
 
-export default class Install extends Command {
+export default class List extends Command {
+  public static description =
+    'List extensions available to project'
+
+  public static examples = [`$ bud extensions:list`]
+
+  public cli: {flags: any; args: any}
+
   public app: Framework
 
-  public static description = 'List installed extensions.'
-
-  public static examples = ['$ bud extensions:list']
-
   public async run() {
-    console.log('Peers')
-    console.log('----')
+    this.cli = this.parse(Build)
 
-    this.app.discovery.getValues('peers').forEach(item => {
-      console.log(`- ${item.name}`)
+    const runner = new Runner(this.cli, {
+      config,
+      mode: 'production',
     })
+    this.app = await runner.make()
 
-    console.log('')
+    this.app.dashboard.render(
+      this.app.discovery
+        .getValues('peers')
+        .map(peer => `- ${peer.name}`),
 
-    console.log('Requires')
-    console.log('----')
-
-    this.app.discovery
-      .getValues('required')
-      .forEach(({name}) => {
-        console.log(`- ${name}`)
-      })
+      'bud extensions:list',
+    )
 
     process.exit()
   }
